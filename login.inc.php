@@ -2,11 +2,11 @@
 session_start();
 include '../dbh.php';
 
-$uid= $_POST['uid'];
-$pwd= $_POST['pwd'];
+	$email = $_POST['email'];
+	$password= $_POST['password'];
 
-$sql = "SELECT * FROM users2 WHERE uid= '$uid' AND pwd= '$pwd'";
-$result = $conn->query($sql);
+	$sqlquery = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+	$result = $conn->query($sql);
 
 if(!$row= $result->fetch_assoc()) {
 	echo "Your username and password is not correct";
