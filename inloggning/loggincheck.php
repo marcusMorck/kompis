@@ -1,29 +1,20 @@
 <?php
-//Variabler för serverns standardvärden
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$database = "kompis";
+require "config.php";
 
-// skapar en connection till databasen
-$conn = mysqli_connect($servername, $username, $password, $database);
 
-// Checkar så att connectionen funkar
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-echo "Connected successfully";
+echo "Connected successfully <br>";
 
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 
+	$sqlquery = "SELECT * FROM users WHERE email='$email' AND hashedPw='$password'";
 
-	$sqlquery = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+	$stm = $pdo->prepare($sqlquery);
+	$row = $stm->fetch();
+	$pwd = hash("sha512", $password . $row['salt'] );
+	$password = $pwd;
 
-	$result = mysqli_query($conn, $sqlquery);
-
-	if (mysqli_num_rows($result) == 1)
+	if ($stm->fetchColumn() > 0)
 	{
 		
 		header("Location: loggout.php");
@@ -31,7 +22,7 @@ echo "Connected successfully";
 	else
 	{
 		echo "Fel användarnamn eller lösenord, var vänlig försök igen! <br>
-		klicka <a href='loggain.php'>Här</a> för att göra ett nytt försök!";
+		klicka <a href='loggin.php'>Här</a> för att göra ett nytt försök!";
 	}	
 
 
