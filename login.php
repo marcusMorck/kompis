@@ -3,9 +3,8 @@
 session_start();
 require "config.php";
 
-
-echo "Connected successfully <br>";
-
+if(!isset($_SESSION['role']){
+	
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 
@@ -40,6 +39,9 @@ echo "Connected successfully <br>";
 		klicka <a href='loggin.php'>Här</a> för att göra ett nytt försök!";
 	}	
 
-
-
+}
+else{
+		echo "Du är inte inloggad, var vänlig logga in!<br>
+		klicka <a href='login.php'>Här</a> för att göra ett nytt försök!";
+}
 ?>
