@@ -18,8 +18,21 @@ echo "Connected successfully <br>";
 
 	if ($stm->fetchColumn() > 0)
 	{
-		$_SESSION['id'] = $row['id'];
-		header("Location: index.php");
+		if ($row['role'] === ""){
+			//Inloggad som användare
+			$_SESSION['role'] = $row['role'];
+			header("Location: index.php");
+		}
+		else if ($_SESSION['role'] === "barnvakt"){
+			//Inloggad som barnvakt
+			$_SESSION['role'] = $row['role'];
+			header("Location: index.php");
+		}
+		else if ($_SESSION['role'] === "läxhjälp"){
+			//Inloggad som läxhjälp
+			$_SESSION['role'] = $row['role'];
+			header("Location: index.php");
+		}
 	}
 	else
 	{
