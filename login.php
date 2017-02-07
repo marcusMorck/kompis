@@ -3,9 +3,8 @@
 session_start();
 require "config.php";
 
-
-echo "Connected successfully <br>";
-
+if(!isset($_SESSION['role']){
+	
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 
@@ -18,8 +17,26 @@ echo "Connected successfully <br>";
 
 	if ($stm->fetchColumn() > 0)
 	{
-		$_SESSION['id'] = $row['id'];
-		header("Location: index.php");
+		if ($row['role'] === ""){
+			//Inloggad som användare
+			$_SESSION['role'] = $row['role'];
+			header("Location: index.php");
+		}
+		else if ($_SESSION['role'] === "barnvakt"){
+			//Inloggad som barnvakt
+			$_SESSION['role'] = $row['role'];
+			header("Location: index.php");
+		}
+		else if ($_SESSION['role'] === "läxhjälp"){
+			//Inloggad som läxhjälp
+			$_SESSION['role'] = $row['role'];
+			header("Location: index.php");
+		}
+		else if ($_SESSION['role'] === "admin"){
+			//Inloggad som admin
+			$_SESSION['role'] = $row['role'];
+			header("Location: index.php");
+		}
 	}
 	else
 	{
@@ -27,6 +44,9 @@ echo "Connected successfully <br>";
 		klicka <a href='loggin.php'>Här</a> för att göra ett nytt försök!";
 	}	
 
-
-
+}
+else{
+		echo "Du är inte inloggad, var vänlig logga in!<br>
+		klicka <a href='login.php'>Här</a> för att göra ett nytt försök!";
+}
 ?>
