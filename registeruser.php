@@ -6,17 +6,15 @@ session_start();
 <html>
 <head>
 	<title>registrera användare</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 
 <?php
 require "config.php";
-
-
-// Ladda nödvändiga klasser via autoload
-spl_autoload_register(function ($class) {
-    include 'class/' . $class . '.php';
-});
 
 
 if (isset($_POST['submitReg'])) {
@@ -27,7 +25,7 @@ if (isset($_POST['submitReg'])) {
 	}
 
 	// letar efter tomma fält
-	if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['epost']) || empty($_POST['password']) || empty($_POST['adress']) || empty($_POST['zipCode']) || empty($_POST['city']) || empty($_POST['phoneNumber'])) {
+	if (empty($_POST['name']) || empty($_POST['epost']) || empty($_POST['password']) || empty($_POST['adress']) || empty($_POST['zipCode']) || empty($_POST['city']) || empty($_POST['phoneNumber'])) {
 		$reg_error[] = 0;
 	}
 
@@ -36,8 +34,7 @@ if (isset($_POST['submitReg'])) {
 		$reg_error[] = 1;
 	}
 
-	$firstname = $_POST['firstName'];
-	$lastname = $_POST['lastName'];
+	$name = $_POST['name'];
 	$epost = $_POST['epost'];
 	$adress = $_POST['adress'];
 	$zipcode = $_POST['zipCode'];
@@ -78,8 +75,35 @@ if (isset($_POST['submitReg'])) {
 		$salt = mt_rand_str(31); // Ger en 31 tkn lång slumpsträng.
 		$hashed = hash("sha512", $password . $salt ); // Ger 128 tkn.
 
-		$stm = $pdo->prepare("INSERT INTO `users` (`firstName`, `lastName`, `email`, `hashedPw`, `salt`, `adress`, `zipCode`, `city`, `phoneNumber`)
-			VALUES ('$firstname', '$lastname', '$epost', '$hashed', '$salt', '$adress', '$zipcode', '$city', '$phonenumber')");
+		if (isset($_POST['babysitter'])) {
+			$stmBaby = $pdo->prepare("INSERT INTO `babysitter` (`name`, `email`, `hashedPw`, `salt`, `adress`, `zipCode`, `city`, `phoneNumber`)
+			VALUES ('$name', '$epost', '$hashed', '$salt', '$adress', '$zipcode', '$city', '$phonenumber')");
+
+		try {
+			$stmBaby->execute();
+		}
+		catch (PDOException $e) {
+			echo "Error: " . $e->getMessage();
+		}
+    
+		$_SESSION['userid'] = $pdo->lastInsertId();
+		}
+		elseif (isset($_POST['tutor'])) {
+			$stmTutor = $pdo->prepare("INSERT INTO `tutor` (`name`, `email`, `hashedPw`, `salt`, `adress`, `zipCode`, `city`, `phoneNumber`)
+			VALUES ('$name', '$epost', '$hashed', '$salt', '$adress', '$zipcode', '$city', '$phonenumber')");
+
+		try {
+			$stmTutor->execute();
+		}
+		catch (PDOException $e) {
+			echo "Error: " . $e->getMessage();
+		}
+    
+		$_SESSION['userid'] = $pdo->lastInsertId();
+		}
+		else {
+			$stm = $pdo->prepare("INSERT INTO `users` (`name`, `email`, `hashedPw`, `salt`, `adress`, `zipCode`, `city`, `phoneNumber`)
+			VALUES ('$name', '$epost', '$hashed', '$salt', '$adress', '$zipcode', '$city', '$phonenumber')");
 
 		try {
 			$stm->execute();
@@ -87,22 +111,24 @@ if (isset($_POST['submitReg'])) {
 		catch (PDOException $e) {
 			echo "Error: " . $e->getMessage();
 		}
-    
-	    $_SESSION['sess_id'] = $pdo->lastInsertId() . date("z");
-	    $_SESSION['sess_user'] = $_POST['firstName'];
+
 		$_SESSION['userid'] = $pdo->lastInsertId();
+		}
+
+		$_SESSION['userobj'] = $_POST;
 
 		echo "<script type='text/javascript'>
 	   	document.location.href = 'usersummary.php';
 		</script>";
 	    exit;
+
 	}
 }
 
 else {
  
 	// Sätt variabler för tomt formulär
-	for ($i = 0; $i < 7; $i++) {
+	for ($i = 0; $i < 6; $i++) {
 	    $back[$i] = "";
 	} 
 }
@@ -112,10 +138,6 @@ $error_list[1] = "Lösenordet måste vara minst 8 tecken.";
 $error_list[2] = "Lösenorden stämmer inte överens.";
 $error_list[3] = "Lösenordet måste innehålla minst en versal.";
 $error_list[4] = "E-postadressen betraktas inte som giltig.";	
-
-// <br /><b>Notice</b>:  Undefined offset: 3 in <b>C:\MAMP\htdocs\kompisprojekt\registeruser.php</b> on line <b>175</b><br />
-
-
 
 ?>
 
@@ -135,13 +157,12 @@ $error_list[4] = "E-postadressen betraktas inte som giltig.";
   		}
   		echo "</ul>\n";
   
-		$back[0] = stripslashes($_POST['firstName']);
-	  	$back[1] = stripslashes($_POST['lastName']);
-	  	$back[2] = stripslashes($_POST['epost']);
-	  	$back[3] = stripslashes($_POST['adress']);
-	  	$back[4] = stripslashes($_POST['zipCode']);
-	  	$back[5] = stripslashes($_POST['city']);
-	  	$back[6] = stripslashes($_POST['phoneNumber']);
+		$back[0] = stripslashes($_POST['name']);
+	  	$back[1] = stripslashes($_POST['epost']);
+	  	$back[2] = stripslashes($_POST['adress']);
+	  	$back[3] = stripslashes($_POST['zipCode']);
+	  	$back[4] = stripslashes($_POST['city']);
+	  	$back[5] = stripslashes($_POST['phoneNumber']);
 
 	}
 
@@ -150,57 +171,63 @@ $error_list[4] = "E-postadressen betraktas inte som giltig.";
 	<form action = "registeruser.php" method = "post" role = "form"> 
 		<div class = 'row'>
 			<div class="form-group col-xs-12 col-md-6">
-				<label for = 'firstName' class = 'req'>Förnamn: </label>
-				<input type = "text" name = "firstName" value = "<?php echo $back[0]; ?>">
-			</div>
-		</div>
-		<div class = 'row'>
-			<div class="form-group col-xs-12 col-md-6">
-				<label for = 'lastName' class = 'req'>Efternamn: </label>
-				<input type = "text" name = "lastName" value = "<?php echo $back[1]; ?>">
+				<label for = 'name' class = 'req'>Namn: </label>
+				<input type = "text" class="form-control" name = "name" value = "<?php echo $back[0]; ?>">
 			</div>
 		</div>
 		<div class = 'row'>
 			<div class="form-group col-xs-12 col-md-6">	
 				<label for = 'epost' class = 'req'>E-post: </label>
-				<input type = "text" name = "epost" value = "<?php echo $back[2]; ?>">
+				<input type = "text" class="form-control" name = "epost" value = "<?php echo $back[1]; ?>">
 			</div>
 		</div>
 		<div class = 'row'>
 			<div class="form-group col-xs-12 col-md-6">	
 				<label for = 'password' class = 'req'>Lösenord: </label>
-				<input type = "password" name = "password" value = "" >
+				<input type = "password" class="form-control" name = "password" value = "" >
 				<span class="help-block">Minst 8 tecken varav minst 1 versal.</span>
 			</div>
 		</div>
 		<div class = 'row'>
 			<div class="form-group col-xs-12 col-md-6"> 
 				<label for = 'password2' class = 'req'>Repetera lösenord: </label>
-				<input type = "password" name = "password2" value = "">
+				<input type = "password" class="form-control" name = "password2" value = "">
 			</div>
 		</div>
 		<div class = 'row'>
 			<div class="form-group col-xs-12 col-md-6">	
 				<label for = 'adress' class = 'req'>Adress: </label>
-				<input type = "text" name = "adress" value = "<?php echo $back[3]; ?>">
+				<input type = "text" class="form-control" name = "adress" value = "<?php echo $back[2]; ?>">
 			</div>
 		</div>
 		<div class = 'row'>
 			<div class="form-group col-xs-12 col-md-6">	
 				<label for = 'zipCode' class = 'req'>Postnummer: </label>
-				<input type = "text" name = "zipCode" value = "<?php echo $back[4]; ?>">
+				<input type = "text" class="form-control" name = "zipCode" value = "<?php echo $back[3]; ?>">
 			</div>
 		</div>
 		<div class = 'row'>
 			<div class="form-group col-xs-12 col-md-6">	
 				<label for = 'city' class = 'req'>Ort: </label>
-				<input type = "text" name = "city" value = "<?php echo $back[5]; ?>">
+				<input type = "text" class="form-control" name = "city" value = "<?php echo $back[4]; ?>">
 			</div>
 		</div>
 		<div class = 'row'>
 			<div class="form-group col-xs-12 col-md-6">	
 				<label for = 'phoneNumber' class = 'req'>Telefonnummer: </label>
-				<input type = "text" name = "phoneNumber" value = "<?php echo $back[6]; ?>">
+				<input type = "text" class="form-control" name = "phoneNumber" value = "<?php echo $back[5]; ?>">
+			</div>
+		</div>
+		<div class = 'row'>
+			<div class="form-group col-xs-12 col-md-6">
+				<label>Barnvakt: <input type="checkbox" name="babysitter" value="babysitter"></label>
+				<span class="help-block">Kryssa i om du vill anmäla dig som barnvakt</span>
+			</div>
+		</div>
+		<div class = 'row'>
+			<div class="form-group col-xs-12 col-md-6">
+				<label>Läxhjälp: <input type="checkbox" name="tutor" value="tutor"></label>
+				<span class="help-block">Kryssa i om du vill anmäla dig som läxhjälpare</span>
 			</div>
 		</div>
 		<div class = 'row'>
@@ -213,6 +240,9 @@ $error_list[4] = "E-postadressen betraktas inte som giltig.";
 </div>
 </div>
 
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 </html>
