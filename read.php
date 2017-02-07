@@ -27,20 +27,21 @@
 <?php
 require 'config.php';
 
-$sql = "SELECT `id`, `name`, `email`, `adress`, `zipCode`, `city`, `phoneNumber` FROM `babysitter`";
-$stmBaby = $pdo->prepare($sql);
-$stmBaby->execute([]);
+$sql = "SELECT `id`, `name`, `email`, `role`, `adress`, `zipCode`, `city`, `phoneNumber` FROM `users` WHERE `role` = :roll";
+$stmBaby = $pdo->prepare($sql); 
+$stmBaby->execute(['roll' => 'Barnvakt']);
 
 echo "<div class=\"babysitter\"><h1>Barnvakter</h1>
 		<table>
 		<tr>
-			<th>Info</th> <th>Namn</th> <th>E-post</th> <th>Adress</th> <th>Postnr</th> <th>Stad</th> <th>Telefonnummer</th>
+			<th>Info</th> <th>Boka</th> <th>Namn</th> <th>E-post</th> <th>Roll</th> <th>Adress</th> <th>Postnr</th> <th>Stad</th> <th>Telefonnummer</th>
 		</tr>";
 
 	foreach ($stmBaby as $row) {
 		$id = $row['id'];
 		$name = $row['name'];
 		$epost = $row['email'];
+		$role = $row['role'];
 		$adress = $row['adress'];
 		$zipcode = $row['zipCode'];
 		$city = $row['city'];
@@ -50,31 +51,33 @@ echo "<tr>"; ?>
 	<td>
 	<form action="read.php" method="post">
 	<input type="hidden" name="idBaby" value="<?php echo $row['id'];?>" />
-	<button type="button" id="infoBaby" onclick="window.open('userinfo.php')">Info</button>
+	<button type="button" id="infobaby" onclick="window.open('userinfo.php')">Info</button></td>
+	<td><button type="button" id="bookbaby" onclick="window.open('bookbabysitter.php')">Boka</button>
 	</form>
 	</td>
 	<?php 
-	echo "<td>$name</td> <td>$epost</td> <td>$adress</td> <td>$zipcode</td> <td>$city</td> <td>$phoneNumber</td>
+	echo "<td>$name</td> <td>$epost</td> <td>$role</td> <td>$adress</td> <td>$zipcode</td> <td>$city</td> <td>$phoneNumber</td>
 		</tr>";
 	}
 
 echo "</table></div>";
 echo "<br>\n";
 
+$sql = "SELECT `id`, `name`, `email`, `role`, `adress`, `zipCode`, `city`, `phoneNumber` FROM `users` WHERE `role` = :roll";
+$stmTutor = $pdo->prepare($sql); 
+$stmTutor->execute(['roll' => 'Läxhjälp']);
 
-$sql = "SELECT `id`, `name`, `email`, `adress`, `zipCode`, `city`, `phoneNumber` FROM `tutor`";
-$stmTutor = $pdo->prepare($sql);
-$stmTutor->execute([]);
-
-echo "<div class=\"tutor\"> <h1>Läxhjälp</h1>
+echo "<div class=\"tutor\"><h1>Läxhjälp</h1>
 		<table>
 		<tr>
-			<th>Info</th> <th>Namn</th> <th>E-post</th> <th>Adress</th> <th>Postnr</th> <th>Stad</th> <th>Telefonnummer</th>
+			<th>Info</th> <th>Boka</th> <th>Namn</th> <th>E-post</th> <th>Roll</th> <th>Adress</th> <th>Postnr</th> <th>Stad</th> <th>Telefonnummer</th>
 		</tr>";
 
 	foreach ($stmTutor as $row) {
+		$id = $row['id'];
 		$name = $row['name'];
 		$epost = $row['email'];
+		$role = $row['role'];
 		$adress = $row['adress'];
 		$zipcode = $row['zipCode'];
 		$city = $row['city'];
@@ -83,24 +86,18 @@ echo "<div class=\"tutor\"> <h1>Läxhjälp</h1>
 echo "<tr>"; ?>
 	<td>
 	<form action="read.php" method="post">
-	<input type="hidden" name="idTutor" value="<?php echo $row['id'];?>" />
-	<button type="button" id="infoTutor" onclick="window.open('userinfo.php')">Info</button>
+	<input type="hidden" name="idtutor" value="<?php echo $row['id'];?>" />
+	<button type="button" id="infotutor" onclick="window.open('userinfo.php')">Info</button></td>
+	<td><button type="button" id="booktutor" onclick="window.open('booktutor.php')">Boka</button>
 	</form>
 	</td>
-	<?php
-	echo "<td>$name</td> <td>$epost</td> <td>$adress</td> <td>$zipcode</td> <td>$city</td> <td>$phoneNumber</td>
-	</tr>";
+	<?php 
+	echo "<td>$name</td> <td>$epost</td> <td>$role</td> <td>$adress</td> <td>$zipcode</td> <td>$city</td> <td>$phoneNumber</td>
+		</tr>";
 	}
 
 echo "</table></div>";
 echo "<br>\n";
-
-
-
-
-
-
-
 
 ?>
 
