@@ -32,6 +32,11 @@ if(!isset($_SESSION['role']){
 			$_SESSION['role'] = $row['role'];
 			header("Location: index.php");
 		}
+		else if ($_SESSION['role'] === "admin"){
+			//Inloggad som admin
+			$_SESSION['role'] = $row['role'];
+			header("Location: index.php");
+		}
 	}
 	else
 	{
