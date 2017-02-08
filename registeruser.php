@@ -40,6 +40,7 @@ if (isset($_POST['submitReg'])) {
 	$zipcode = $_POST['zipCode'];
 	$city = $_POST['city'];
 	$phonenumber = $_POST['phoneNumber'];
+	$role = $_POST['role'];
 
 	// kollar om lösenorden stämmer överens
 	if ($_POST['password'] != $_POST['password2']) {
@@ -75,35 +76,8 @@ if (isset($_POST['submitReg'])) {
 		$salt = mt_rand_str(31); // Ger en 31 tkn lång slumpsträng.
 		$hashed = hash("sha512", $password . $salt ); // Ger 128 tkn.
 
-		if (isset($_POST['babysitter'])) {
-			$stmBaby = $pdo->prepare("INSERT INTO `babysitter` (`name`, `email`, `hashedPw`, `salt`, `adress`, `zipCode`, `city`, `phoneNumber`)
-			VALUES ('$name', '$epost', '$hashed', '$salt', '$adress', '$zipcode', '$city', '$phonenumber')");
-
-		try {
-			$stmBaby->execute();
-		}
-		catch (PDOException $e) {
-			echo "Error: " . $e->getMessage();
-		}
-    
-		$_SESSION['userid'] = $pdo->lastInsertId();
-		}
-		elseif (isset($_POST['tutor'])) {
-			$stmTutor = $pdo->prepare("INSERT INTO `tutor` (`name`, `email`, `hashedPw`, `salt`, `adress`, `zipCode`, `city`, `phoneNumber`)
-			VALUES ('$name', '$epost', '$hashed', '$salt', '$adress', '$zipcode', '$city', '$phonenumber')");
-
-		try {
-			$stmTutor->execute();
-		}
-		catch (PDOException $e) {
-			echo "Error: " . $e->getMessage();
-		}
-    
-		$_SESSION['userid'] = $pdo->lastInsertId();
-		}
-		else {
-			$stm = $pdo->prepare("INSERT INTO `users` (`name`, `email`, `hashedPw`, `salt`, `adress`, `zipCode`, `city`, `phoneNumber`)
-			VALUES ('$name', '$epost', '$hashed', '$salt', '$adress', '$zipcode', '$city', '$phonenumber')");
+		$stm = $pdo->prepare("INSERT INTO `users` (`name`, `email`, `role`, `hashedPw`, `salt`, `adress`, `zipCode`, `city`, `phoneNumber`)
+			VALUES ('$name', '$epost', '$role', '$hashed', '$salt', '$adress', '$zipcode', '$city', '$phonenumber')");
 
 		try {
 			$stm->execute();
@@ -121,8 +95,6 @@ if (isset($_POST['submitReg'])) {
 	   	document.location.href = 'usersummary.php';
 		</script>";
 	    exit;
-
-	}
 }
 
 else {
@@ -220,13 +192,13 @@ $error_list[4] = "E-postadressen betraktas inte som giltig.";
 		</div>
 		<div class = 'row'>
 			<div class="form-group col-xs-12 col-md-6">
-				<label>Barnvakt: <input type="checkbox" name="babysitter" value="babysitter"></label>
+				<label>Barnvakt: <input type="radio" name="role" id="babysitter" value="Barnvakt"></label>
 				<span class="help-block">Kryssa i om du vill anmäla dig som barnvakt</span>
 			</div>
 		</div>
 		<div class = 'row'>
 			<div class="form-group col-xs-12 col-md-6">
-				<label>Läxhjälp: <input type="checkbox" name="tutor" value="tutor"></label>
+				<label>Läxhjälp: <input type="radio" name="role" id="tutor" value="Läxhjälp"></label>
 				<span class="help-block">Kryssa i om du vill anmäla dig som läxhjälpare</span>
 			</div>
 		</div>
@@ -246,4 +218,3 @@ $error_list[4] = "E-postadressen betraktas inte som giltig.";
 
 </body>
 </html>
-
