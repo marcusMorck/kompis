@@ -73,11 +73,11 @@ if (isset($_POST['submitReg'])) {
 		}
 
 		$password = $_POST['password'];
-		$salt = mt_rand_str(31); // Ger en 31 tkn lång slumpsträng.
-		$hashed = hash("sha512", $password . $salt ); // Ger 128 tkn.
-
-		$stm = $pdo->prepare("INSERT INTO `users` (`name`, `email`, `role`, `hashedPw`, `salt`, `adress`, `zipCode`, `city`, `phoneNumber`)
-			VALUES ('$name', '$epost', '$role', '$hashed', '$salt', '$adress', '$zipcode', '$city', '$phonenumber')");
+		//$salt = mt_rand_str(31); // Ger en 31 tkn lång slumpsträng.
+		$hashed = password_hash($password, PASSWORD_BCRYPT); //Alla gamla lösenord som är gjorda innan denna raden funkar ej med inloggningen
+		//$salt behövs ej då password_hash() fixar ett eget salt som inte behövs sparas i databasen
+		$stm = $pdo->prepare("INSERT INTO `users` (`name`, `email`, `role`, `hashedPw`, `adress`, `zipCode`, `city`, `phoneNumber`)
+			VALUES ('$name', '$epost', '$role', '$hashed', '$adress', '$zipcode', '$city', '$phonenumber')");
 
 		try {
 			$stm->execute();
