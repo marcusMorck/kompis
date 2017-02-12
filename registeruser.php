@@ -67,11 +67,11 @@ if (isset($_POST['submitReg'])) {
 	if (!isset($reg_error)) {
 
 		// En funktion för att skapa ett bra salt.
-		function mt_rand_str ($l, $c = 'abcdefghiJKkLmnopQRStuVwxyz1234567890') {
+		/*function mt_rand_str ($l, $c = 'abcdefghiJKkLmnopQRStuVwxyz1234567890') {
 		    for ($s = '', $cl = strlen($c)-1, $i = 0; $i < $l; $s .= $c[mt_rand(0, $cl)], ++$i);
 		    return $s;
 		}
-
+*/
 		$password = $_POST['password'];
 		//$salt = mt_rand_str(31); // Ger en 31 tkn lång slumpsträng.
 		$hashed = password_hash($password, PASSWORD_BCRYPT); //Alla gamla lösenord som är gjorda innan denna raden funkar ej med inloggningen
