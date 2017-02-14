@@ -19,10 +19,6 @@ if (isset($_POST['book'])) {
 		$_POST[$key] = trim($val);
 	}
 
-	if (empty($_POST['name']) || empty($_POST['subject']) || empty($_POST['starttime']) || empty($_POST['endtime'])) {
-		$reg_error[] = 0;
-	}
-
 	$userName = $_POST['name'];
 	$subject = $_POST['subject'];
 	$tutor = $_POST['tutor'];
@@ -41,53 +37,49 @@ if (isset($_POST['book'])) {
 		}
 
 		$_SESSION['userid'] = $pdo->lastInsertId();
-		}
 
 		$_SESSION['bookobj'] = $_POST;
 
 		echo "<script type='text/javascript'>
-	   	document.location.href = 'bookingsummary.php';
+	   	document.location.href = '../html/my_page.html';
 		</script>";
 	    exit;
+	}
 }
-
-$error_list[0] = "Alla obligatoriska fält är inte ifyllda.";
-
-	if (isset($reg_error)){
- 
-		echo "<p>Något blev fel:<br>\n";
-		echo "<ul>\n";
-  		for ($i = 0; $i < sizeof($reg_error); $i++) {
-    		echo "<li>{$error_list[$reg_error[$i]]}</li>\n";
-  		}
-  		echo "</ul>\n";
-  	}
-
 ?>
 
-<form action='booktutor.php' method='post'>
+<h1>Boka Läxhjälp</h1>
+
+
+	<form action='booktutor.php' method='post'>
 		<p>Namn:</p>
 		<input type='text' name='name' value=''>
 		<p>Ämne:</p>
 		<input type='text' name='subject' value=''> 
+		<p>Starttid:</p>
+		<input type='datetime-local' name='starttime'>
+		<p>Sluttid:</p>
+		<input type='datetime-local' name='endtime'>
 		<p>Läxhjälp:</p>
-		<select name ='tutor'>";
+		<select name ='tutor' id="tutor">
+			<option></option>
 			<?php
+			if (isset($_POST['starttime']) && isset($_POST['endtime'])) {
 				$stm = $pdo->prepare("SELECT `name` FROM `users` WHERE `role` = :roll");
 				$stm->execute(['roll' => 'Läxhjälp']);
 					foreach ($stm as $row) {
 						$name = $row['name'];
 						echo "<option>$name</option>";
 						}
+				}else {
+					echo "<option>Ingen läxhjälp ledig</option>";
+				}
+
 			?>
 		</select>
-		<p>Starttid:</p>
-		<input type='datetime-local' name='starttime'>
-		<p>Sluttid:</p>
-		<input type='datetime-local' name='endtime'>
 		<br><br>
 		<button type='submit' name='book'>Boka</button>
-		</form>
+	</form>
 
 
 </body>
