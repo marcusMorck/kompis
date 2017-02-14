@@ -64,16 +64,12 @@ if (isset($_POST['book'])) {
 		<select name ='tutor' id="tutor">
 			<option></option>
 			<?php
-			if (isset($_POST['starttime']) && isset($_POST['endtime'])) {
 				$stm = $pdo->prepare("SELECT `name` FROM `users` WHERE `role` = :roll");
 				$stm->execute(['roll' => 'Läxhjälp']);
 					foreach ($stm as $row) {
 						$name = $row['name'];
 						echo "<option>$name</option>";
 						}
-				}else {
-					echo "<option>Ingen läxhjälp ledig</option>";
-				}
 
 			?>
 		</select>
