@@ -22,8 +22,10 @@ $x=$_SESSION['userobj']['name'];
 echo "<p>Namn: $x</p>";
 $x=$_SESSION['userobj']['epost'];
 echo "<p>E-post: $x</p>";
-$x=$_SESSION['userobj']['role'];
-echo "<p>Roll: $x</p>";
+if (isset($_SESSION['userobj']['role'])) {
+	$x=$_SESSION['userobj']['role'];
+	echo "<p>Roll: $x</p>";
+}
 $x=$_SESSION['userobj']['adress'];
 echo "<p>Adress: $x</p>";
 $x=$_SESSION['userobj']['zipCode'];
