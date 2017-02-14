@@ -20,17 +20,13 @@ if (isset($_POST['book'])) {
 	foreach ($_POST as $key => $val) {
 		$_POST[$key] = trim($val);
 	}
-
-	// letar efter tomma fält
-	if (empty($_POST['name']) || empty($_POST['starttime']) || empty($_POST['endtime'])) {
-		$reg_error[] = 0;
-	}
-
+	
 	$userName = $_POST['name'];
 	$children = $_POST['children'];
 	$babysitter = $_POST['babysitter'];
 	$startTime = $_POST['starttime'];
-	$endTime = $_POST['endtime'];
+	$endTime = $_POST['endtime'];			
+			
 
 	if (!isset($reg_error)) {
 		
@@ -44,36 +40,19 @@ if (isset($_POST['book'])) {
 		}
 
 		$_SESSION['userid'] = $pdo->lastInsertId();
-		}
 
 		$_SESSION['bookobj'] = $_POST;
 
 		echo "<script type='text/javascript'>
-	   	document.location.href = 'bookingsummary.php';
+	   	document.location.href = '../html/my_page.html';
 		</script>";
 	    exit;
+	}
 }
-
-$error_list[0] = "Alla obligatoriska fält är inte ifyllda.";
-$error_list[1] = "Namnet hittades inte i databasen";
-
-
 ?>
 
 <h1>Boka Barnvakt</h1>
 
-<?php
-		
-	if (isset($reg_error)){
- 
-		echo "<p>Något blev fel:<br>\n";
-		echo "<ul>\n";
-	  	for ($i = 0; $i < sizeof($reg_error); $i++) {
-	    	echo "<li>{$error_list[$reg_error[$i]]}</li>\n";
-	  	}
-	 	echo "</ul>\n";
-	 }
-?>
 
 	<form action="bookbabysitter.php" method="post">
 	<p>Namn:</p>
@@ -87,21 +66,24 @@ $error_list[1] = "Namnet hittades inte i databasen";
 			<option value="5">5</option>
 			<option value="6">6</option>
 		</select>
+	<p>Starttid:</p>
+		<input type="datetime-local" name="starttime" id="start">
+	<p>Sluttid:</p>
+		<input type="datetime-local" name="endtime" id="end">
 	<p>Barnvakt:</p>
-		<select name ="babysitter">
-			<?php
+		<select name ="babysitter" id="vakt" onchange="recieved(this.value)">
+			<option></option> 
+			<?php 
 				$stm = $pdo->prepare("SELECT `name` FROM `users` WHERE `role` = :roll");
 				$stm->execute(['roll' => 'Barnvakt']);
 					foreach ($stm as $row) {
 						$name = $row['name'];
 						echo "<option>$name</option>";
-						}
+						}	
+		
 			?>
+			
 		</select>
-	<p>Starttid:</p>
-		<input type="datetime-local" name="starttime">
-	<p>Sluttid:</p>
-		<input type="datetime-local" name="endtime">
 		<br><br>
 		<button type="submit" name="book">Boka</button>
 	</form>
