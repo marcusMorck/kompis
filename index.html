@@ -1,0 +1,24 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Kompis</title>
+		<meta name="description" content="Läxhjälp">
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	</head>
+	<body>
+		<div style="display:none" id="hideChild">
+			<div id="template">
+			</div>
+			<div id="text">
+				<p>Välkommen till Kompis. Här kan du både boka barnvakt och läxhjälp!</p>
+			</div>
+			<script>
+				$(function(){
+					$('#template').load('../html/template.html');
+				});
+			</script>
+		</div>
+	</body>
+</html>
+
