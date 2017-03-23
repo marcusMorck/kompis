@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Logga In</title>
+		<meta name="description" content="Logga In">
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	</head>
+	<body>
+		<div style="display:none" id="hideChild">
+			<div id="template">
+			</div>
+			<div class="login">
+				<form action="../includes/login.php" method="post">
+					<img src="../assets/panel.png" id="login_panel">
+					<p id="login_text"> Logga in</p>
+					<input id="login_name" type="text" name="email" placeholder="Mejl" required="required"/>
+					<input id="login_pass" type="password" name="password" placeholder="Lösenord" required="required"/>
+					<button id="login_button" name="submit" class="knapp">Logga in</button>
+				</form>
+			</div>
+			<button id="forgot_pass_button" class="knapp">Glömt Lösenord</button>
+			<script>
+				$(function(){
+					$('#template').load('template.html');
+				});
+			</script>
+		</div>
+	</body>
+</html>

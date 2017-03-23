@@ -1,0 +1,21 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Kontakta Oss</title>
+		<meta name="description" content="Kontaka Oss">
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	</head>
+	<body>
+		<div style="display:none" id="hideChild">
+			<div id="template">
+			</div>
+			<p id="text">Hur kontaktar du oss? Kompis@hotmail.com</p>
+			<script>
+				$(function(){
+					$('#template').load('template.html');
+				});
+			</script>
+		</div>
+	</body>
+</html>

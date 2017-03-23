@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Ändra Uppgifter</title>
+		<meta name="description" content="Mina Sidor">
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	</head>
+	<body>
+		<div style="display:none" id="hideChild">
+			<div id="template">
+			</div>
+			<img src="../assets/panel.png" id="reg_panel">
+			<p id="sitter_t">Barnvakt</p>
+			<p id="homew_t">Läxhjälp</p>
+			<div class="change">
+				<form action="../includes/update.php" method="post">
+					<p id="change_text">Ändra Uppgifter</p>
+					<input id="user" type="text" name="name" placeholder="Namn" required="required"/>
+					<input id="pass" type="password" name="password" placeholder="Lösenord" required="required"/>
+					<input id="pass2" type="password" name="password2" placeholder="Bekräfta Lösenord" required="required"/>
+					<input id="adress" type="text" name="adress" placeholder="Adress" required="required"/>
+					<input id="zip" type="text" name="zipCode" placeholder="Post nr" required="required"/>
+					<input id="city" type="text" name="city" placeholder="Stad" required="required"/>
+					<input id="phone" type="text" name="phoneNumber" placeholder="Mobil nr" required="required"/>
+					<input id="mail" type="text" name="epost" placeholder="E-Mail" required="required"/>
+					<input id="sitter" type="radio" name="role" value="Barnvakt">
+					<input id="homework" type="radio" name="role" value="Läxhjälp">
+					<button id="reg_button_2" type="submit" name="submitReg" onclick="return check();" class="knapp">Ändra</button>	
+				</form>
+			</div>
+			<script>
+				$(function(){
+					$('#template').load('template.html');
+				});
+			</script>
+		</div>
+	</body>
+</html>
