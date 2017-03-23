@@ -59,7 +59,7 @@ else if (isset($_POST['upd_subm_btn']))
 		<label>Roll:<input type="text" name="role" value=<?php echo $result['role'];?>></label><br>
 		<label>HashedPw:<input type="text" name="hashedPw" value=<?php echo $result['hashedPw'];?>></label><br>
 		<label>Adress:<input type="text" name="adress" value=<?php echo $result['adress'];?>></label><br>
-		<label>Postnummer:<input type="text" name="zipcode" value=<?php echo $result['zipcode'];?>></label><br>
+		<label>Postnummer:<input type="text" name="zipcode" value=<?php echo $result['zipCode'];?>></label><br>
 		<label>Stad:<input type="text" name="city" value=<?php echo $result['city'];?>></label><br>
 		<label>Telefonnummer:<input type="text" name="phonenr" value=<?php echo $result['phoneNumber'];?>></label><br>
 		<input type="submit" name="upd_user_btn" value="uppdatera">
