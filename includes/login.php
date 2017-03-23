@@ -1,6 +1,6 @@
 <?php
 session_start(); //needs to be included in all files
-require "../includes/config.php";
+require "config.php";
 
 
 if (!isset($_SESSION['session_id'])) //if the session already is set
@@ -20,9 +20,16 @@ if (!isset($_SESSION['session_id'])) //if the session already is set
         { 
             if (password_verify($password, $rows['hashedPw'])) // Check if the password that is typed in equals to the stored hash
             {
-                // Correct password - create the session and set it equal to the user id in the database
-                $_SESSION['session_id'] = $rows['id'];
-                header('Location: ../html/index.html');
+            if ($rows['role'] != 'admin'){ //inloggad som användare
+	            $_SESSION['session_id'] = $rows['id'];
+	            header('Location: ../index.html');
+            }
+            elseif ($rows['role'] = 'admin') { 
+	            // Correct password - create the session and set it equal to the user id in the database
+	            $_SESSION['admin'] = $rows['role'];
+	            $_SESSION['session_id'] = $rows['id'];
+	            header('Location: ../includes/admin.php');
+                }
             } 
             else
             {
@@ -42,11 +49,11 @@ if (!isset($_SESSION['session_id'])) //if the session already is set
     {
         //The submit button hasn't been clicked - write out error message, redirect back to login page
         echo "du har ingen behörighet till denna sidan, var vänlig försök igen!";
-        header('Refresh:5 url=../html/index.html');
+        header('Refresh:5 url=../index.html');
     }
 }
 else
 {
-    header('Refresh:5 url=../html/index.html');
+    header('Refresh:5 url=../index.html');
     echo "Du är redan inloggad";  
 }
