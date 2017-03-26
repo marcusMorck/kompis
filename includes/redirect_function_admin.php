@@ -51,7 +51,7 @@ else if (isset($_POST['upd_subm_btn']))
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
 		?>
 
-		<form action="update_user_admin.php" method="POST">
+		<form action="updateuseradmin.php" method="POST">
 
 		<label>Id:<input type="text" name="id" value=<?php echo $result['id'];?>></label><br>
 		<label>Name:<input type="text" name="name" value=<?php echo $result['name'];?>></label><br>
