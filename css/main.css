@@ -1,379 +1,773 @@
-﻿/*Allmänt*/
-.knapp{
-	transition:.5s ease;
-	position:absolute;
-	margin:auto;
-	left:0;
-	right:0;
-}
-input{
-	transition:.5s ease;
-	position:absolute;
-	margin:auto;
-	left:0;
-	right:0;
-	top:0;
-	bottom:0;
-}
-p{
-	position:absolute;
-	font-size:100%;
-	color:black;
-	margin-left:auto;
-	margin-right:auto;
-	left:0;
-	right:0;
-}
-body{ 
-	background:#d9e0fc!important; 
-}
-
-/*Menu & Template*/
-#drop_down    { position:absolute; top:36%; }
-#reg_button   { width:110px; height:25px; top:35%; right:630px;}
-#home_button  { width:110px; height:25px; top:35%; right:420px;}
-#baby_button  { width:110px; height:25px; top:35%; right:210px;}
-#page_button  { width:110px; height:25px; top:35%; } 
-#info_button  { width:110px; height:25px; top:35%; left:210px; }
-#cont_button  { width:110px; height:25px; top:35%; left:420px; }
-#log_button   { width:110px; height:25px; top:35%; left:630px; } 
-#logout_button{ position:absolute; width:110px; height:25px; top:35%; left:630px; }
-
-#banner{ 
-	position:absolute; 
-	margin:auto; 
-	width:45%; 
-	height:40%; 
-	left:0; 
-	right:0; 
-	bottom:70%; 
-}
-
-#pic_1{
-	position:absolute;
-	width:22%;
-	height:25%;
-	top:71%;
-	right:77%;
-}
-#pic_2{
-	position:absolute;
-	width:15%;
-	height:27%;
-	top:70%;
-	left:80%;
-}
-#text{
-	position:absolute;
-	margin-left:auto;
-	margin-right:auto;
-	font-size:25px;
-	width:510px;
-	top:50%;
-	left:0%;
-	right:0;	
-}
-
-#text_2{
-	position:absolute;
-	margin-left:auto;
-	margin-right:auto;
-	font-size:25px;
-	width:165px;
-	top:50%;
-	left:0%;
-	right:0;
-}
-
-/*Login*/
-#login_panel{
-	position:absolute;
-	margin:auto;
-	width:200px;
-	height:220px;
-	top:52%;
-	left:0;
-	right:0;
-}
-#login_text{ font-size:25px; width:90px; top:50.5%; }
-#login_name{ width:125px; height:25px; top:170px;   }
-#login_pass{ width:125px; height:25px; top:240px;   } 
-#login_button{
-	margin:auto;
-	width:125px;
-	height:30px;
-	top:0;
-	bottom:0;
-	top:315px;
-}
-#forgot_pass_button{
-	margin:auto;
-	width:125px;
-	height:30px;
-	top:0;
-	bottom:0;
-	top:385px;
-}
-
-/*Registrering*/
-#reg_panel{
-	position:absolute;
-	margin:auto;
-	width:200px;
-	height:375px;
-	top:48%;
-	left:0;
-	right:0;
-}
-#user  { width:125px; height:18px; top:95px; }
-#pass  { width:125px; height:18px; top:150px; }
-#pass2 { width:125px; height:18px; top:205px; }
-#adress{ width:125px; height:18px; top:260px; }
-#zip   { width:125px; height:18px; top:315px; }
-#city  { width:125px; height:18px; top:370px; }
-#phone { width:125px; height:18px; top:425px; }
-#mail  { width:125px; height:18px; top:480px; }
-#reg_text{ font-size:25px; width:150px; top:47%; }
-#sitter_t{ position:absolute; font-size:18px; width:55px; top:715px; right:1.5%; }
-#homew_t { position:absolute; font-size:18px; width:55px; top:740px; right:1.5%; }
-#sitter  { top:538px; left:2%; }
-#homework{ top:588px; left:4%; }
-#reg_button_2{
-	margin:auto;
-	width:125px;
-	height:27.5px;
-	top:0;
-	bottom:0;
-	top:650px;
-}
-
-/*Ändra Uppgifter*/
-#change_text{
-	font-size:25px; 
-	width:166px; 
-	top:46.5%; 	
-}
-#change{
-	position:absolute;
-	top:41.5%;
-	left:27.5%;
-	background:#D3D3D3;
-	color:black;
-}
-
-/*Mina bokningar*/
-#mina_bokningar{
-	position:absolute;
-	margin:auto;
-	width:45%;
-	top:45%; 
-	left:0;
-	right:0;
-}
-
-/*Boka Tider*/
-#namn_bokning{
-	position:absolute;
-	width:200px;
-	height:35px;
-	top:6%;
-}
-#barn{
-	position:absolute;
-	margin:auto;
-	width:205px;
-	height:40px;
-	top:56.5%;
-	left:0;
-	right:0;
-}
-#ämne{
-	position:absolute;
-	width:200px;
-	height:35px;
-	top:17.5%;
-} 
-#start{
-	position:absolute;
-	width:200px;
-	height:4.5%;		
-	top:34.5%;
-}
-#end{
-	position:absolute;
-	width:200px;
-	height:4.5%;		
-	top:50%;
-}
-#vakt{
-	position:absolute;
-	margin:auto;
-	width:205px;
-	height:35px;
-	top:78%;
-	left:0;
-	right:0;
-}
-#boka_hjälp{
-	position:absolute;
-	width:100px;
-	height:30px;	
-	top:85%;
-}
-#bokaLäx{
-	position:absolute;
-	font-size:25px;	
-	width:148px;	
-	margin:auto; 
-	top:46%;
-	left:0; 
-	right:0; 
-}
-#bokaBarn{ 
-	position:absolute; 
-	margin:auto; 
-	font-size:25px;
-	width:151.5px;  
-	top:46%; 
-	left:0; 
-	right:0;
-}
-#starttid{ 
-	position:absolute; 
-	font-size:18px; 
-	width:60px;
-	top:59.5%; 
-}
-#sluttid{ 
-	position:absolute; 
-	font-size:18px; 
-	width:55px; 
-	top:67.5%; 
-}	
-
-/*Surfplattor ståendes*/
-@media all and (max-width:900px){
-	#banner{ width:80%; height:43%; }
-	#logout_button { height:20px; top:35%; left:75%; }
-	#log_button { height:20px; top:35%; left:75%; }
-	#sitter_t{ font-size:17px; top:74%; right:4%; }
-	#homew_t { font-size:17px; top:76.5%; right:4%; }
-	#sitter  { top:538px; left:10%;}
-	#homework{ top:588px; left:10%;}
-	#reg_button_2{ width:15%; height:3%; top:85%; }
-}
-/*Liggandes*/
-@media all and (max-height:800px){
-	#sitter_t{ font-size:17px; top:82.5%; right:3%; }
-	#homew_t { font-size:17px; top:86%; right:3%; }
-	#sitter  { top:73%; left:85px; }
-	#homework{ top:79.5%; left:85px; }
-}
-/*Telefoner Ståendes*/
-@media all and (max-width:600px){
-	#change_text{ font-size:16px; width:34%; top:41.5%; }	
-	
-	#namn_bokning{ position:absolute; width:40%; height:20px; top:5%; }	
-	#barn{ position:absolute;width:41%; height:25px;top:55.5%; }
-	#ämne{ position:absolute; width:40%; height:20px; top:15%; } 
-	#start{ position:absolute; width:40%; height:5%; top:32%; }
-	#end{ position:absolute; width:40%; height:5%; top:52%; }
-	#vakt{ position:absolute; width:41%; height:20px; top:80%; }
-	#boka_hjälp{ position:absolute; width:25%; height:20px; top:85%; }
-	#bokaLäx{ position:absolute; font-size:18px; width:107px; top:45%; }
-	#bokaBarn{ position:absolute; font-size:18px; width:109px; top:45%; }
-	#starttid{ position:absolute; font-size:15px; width:45px; top:57%; }
-	#sluttid{ position:absolute; font-size:15px; width:42px; top:67%; }
-	
-	#banner{ width:100%; height:42%; }
-	#logout_button{ width:100px; height:20px; top:35.7; left:62%; }
-	#log_button{ width:100px; height:20px; top:35.7; left:62%; }
-	#pic_1{ width:30%; height:18%; top:79%; left:1%;}
-	#pic_2{ width:20%; height:20%; top:77%; left:70%; }
-	#text{ font-size:15px; width:50%; top:50%; left:0%; }
-	#text_2{ font-size:15px; width:50%; top:50%; left:0%; }
-	
-	#login_panel { width:45%; height:30%; top:50%; }
-	#login_text  { width:29%; top:46.5%; }
-	#login_name  { width:35%; height:3.5%; top:20%; }
-	#login_pass  { width:35%; height:3.5%; top:30%; }
-	#login_button{ width:35%; height:4%; top:42%; }
-	#forgot_pass_button{ width:35%; height:4%; top:52%; }
-	
-	#reg_panel{ width:45%; height:54%; top:43%; }
-	#reg_text{ font-size:18px; width:34%; top:41.5%; }
-	#user{ width:35%; height:3%; top:3%; }
-	#pass{ width:35%; height:3%; top:12%; }
-	#pass2 { width:35%; height:3%; top:21%; }
-	#adress{ width:35%; height:3%; top:30%; }
-	#zip{ width:35%; height:3%; top:39%; }
-	#city{ width:35%; height:3%; top:48%; }
-	#phone{ width:35%; height:3%; top:57%; }
-	#mail{width:35%; height:3%; top:66%; }
-	#sitter{top:74%; left: 25%;}
-	#homework{top:80%; left:25%;}
-	#sitter_t{ font-size:15px; width:34%; top:82.5%; left:10%; }
-	#homew_t { font-size:15px; width:34%; top:85.5%; left:10%; }
-	#reg_button_2{ width:30%; height:20px; top:86%; }
-}
-
-/*Telefoner Liggandes*/
-@media all and (max-height:350px){
-	#change_text{font-size:16px; width:20%; top:33%; }
-	
-	#namn_bokning{ position:absolute; width:150px; height:20px; bottom:8.5%; }	
-	#barn{ position:absolute;width:155px; height:25px;top:53.5%; }
-	#ämne{ position:absolute; width:150px; height:20px; top:15%; } 
-	#start{ position:absolute; width:150px; height:6%; top:38%; }
-	#end{ position:absolute; width:150px; height:6%; top:60%; }
-	#vakt{ position:absolute; width:155px; height:20px; top:84%; }
-	#boka_hjälp{ position:absolute; width:50px; height:20px; top:92%; }
-	#bokaLäx{ position:absolute; font-size:18px; width:107px; top:37%; }
-	#bokaBarn{ position:absolute; font-size:18px; width:109px; top:37%; }
-	#starttid{ position:absolute; font-size:13px; width:45px; top:57%; }
-	#sluttid{ position:absolute; font-size:13px; width:42px; top:67.5%; }	
-	
-	#banner{ width:60%; }
-	#logout_button{ width:100px; height:20px; top:35.7%; left:80%;}
-	#log_button{ width:100px; height:20px; top:35.7%; left:80%; }
-	#pic_1{ width:30%; height:28%; top:70%; }
-	#pic_2{ width:22%; height:30%; top:70%; left:70%; }
-	#text{ font-size:15px; width:40%; top:50%; left:5%; }
-	#text_2{ font-size:15px;  width:40%; top:50%; }
-	
-	#login_panel { width:30%; height:45%; top:45%; }
-	#login_text  { font-size:22px; width:15%; top:40%; }
-	#login_name  { width:20%; height:4%; top:20%; }
-	#login_pass  { width:20%; height:4%; top:35%; }
-	#login_button{ width:20%; height:20px; top:50%; }
-	#forgot_pass_button{ width:20%; height:20px; top:65%; }
-	
-	#reg_panel{ width:30%; height:78%; top:35%; }
-	#reg_text{ font-size:18px; width:20%; top:31%; }
-	#user{ width:20%; height:3.5%; bottom:8%; }
-	#pass{ width:20%; height:3.5%; top:7%; }
-	#pass2 { width:20%; height:3.5%; top:19%; }
-	#adress{ width:20%; height:3.5%; top:31%; }
-	#zip{ width:20%; height:3.5%; top:43%; }
-	#city{ width:20%; height:3.5%; top:55%; }
-	#phone{ width:20%; height:3.5%; top:67%; }
-	#mail{ width:20%; height:3.5%; top:79%; }
-	#sitter{ width:20%; height:3.5%; top:90.5%; left:13%;}
-	#homework{ width:20%; height:3.5%; top:101%; left:13%;}
-	#sitter_t{ font-size:15px; width:10%; top:88%; right:13%; }
-	#homew_t { font-size:15px; width:10%; top:93%; right:13%; }
-	#reg_button_2{ width:20%; height:20px; top:113%; }
-}
-nav select {
-  display: none;
-}
-@media(max-width: 960px) {
-  nav ul     { display: none; }
-  nav select { display: inline-block; }
-  #menu {
-	  display:none;
-  }
-  #change{
-	  display:none;
-  }
+﻿/*Allmänt*/
+
+.knapp{
+
+	transition:.5s ease;
+
+	position:absolute;
+
+	margin:auto;
+
+	left:0;
+
+	right:0;
+
+}
+
+input{
+
+	transition:.5s ease;
+
+	position:absolute;
+
+	margin:auto;
+
+	left:0;
+
+	right:0;
+
+	top:0;
+
+	bottom:0;
+
+}
+
+p{
+
+	position:absolute;
+
+	font-size:100%;
+
+	color:black;
+
+	margin-left:auto;
+
+	margin-right:auto;
+
+	left:0;
+
+	right:0;
+
+}
+
+body{ 
+
+	background:#d9e0fc!important; 
+
+}
+
+
+
+/*Menu & Template*/
+
+#drop_down    { position:absolute; top:36%; }
+
+#reg_button   { width:110px; height:25px; top:35%; right:630px;}
+
+#home_button  { width:110px; height:25px; top:35%; right:420px;}
+
+#baby_button  { width:110px; height:25px; top:35%; right:210px;}
+
+#page_button  { width:110px; height:25px; top:35%; } 
+
+#info_button  { width:110px; height:25px; top:35%; left:210px; }
+
+#cont_button  { width:110px; height:25px; top:35%; left:420px; }
+
+#log_button   { width:110px; height:25px; top:35%; left:630px; } 
+
+#logout_button{ position:absolute; width:110px; height:25px; top:35%; left:630px; }
+
+
+
+#banner{ 
+
+	position:absolute; 
+
+	margin:auto; 
+
+	width:45%; 
+
+	height:40%; 
+
+	left:0; 
+
+	right:0; 
+
+	bottom:70%; 
+
+}
+
+
+
+#pic_1{
+
+	position:absolute;
+
+	width:22%;
+
+	height:25%;
+
+	top:71%;
+
+	right:77%;
+
+}
+
+#pic_2{
+
+	position:absolute;
+
+	width:15%;
+
+	height:27%;
+
+	top:70%;
+
+	left:80%;
+
+}
+
+#text{
+
+	position:absolute;
+
+	margin-left:auto;
+
+	margin-right:auto;
+
+	font-size:25px;
+
+	width:510px;
+
+	top:50%;
+
+	left:0%;
+
+	right:0;	
+
+}
+
+
+
+#text_2{
+
+	position:absolute;
+
+	margin-left:auto;
+
+	margin-right:auto;
+
+	font-size:25px;
+
+	width:165px;
+
+	top:50%;
+
+	left:0%;
+
+	right:0;
+
+}
+
+
+
+/*Login*/
+
+#login_panel{
+
+	position:absolute;
+
+	margin:auto;
+
+	width:200px;
+
+	height:220px;
+
+	top:52%;
+
+	left:0;
+
+	right:0;
+
+}
+
+#login_text{ font-size:25px; width:90px; top:50.5%; }
+
+#login_name{ width:125px; height:25px; top:170px;   }
+
+#login_pass{ width:125px; height:25px; top:240px;   } 
+
+#login_button{
+
+	margin:auto;
+
+	width:125px;
+
+	height:30px;
+
+	top:0;
+
+	bottom:0;
+
+	top:315px;
+
+}
+
+#forgot_pass_button{
+
+	margin:auto;
+
+	width:125px;
+
+	height:30px;
+
+	top:0;
+
+	bottom:0;
+
+	top:385px;
+
+}
+
+
+
+/*Registrering*/
+
+#reg_panel{
+
+	position:absolute;
+
+	margin:auto;
+
+	width:200px;
+
+	height:375px;
+
+	top:48%;
+
+	left:0;
+
+	right:0;
+
+}
+
+#user  { width:125px; height:18px; top:95px; }
+
+#pass  { width:125px; height:18px; top:150px; }
+
+#pass2 { width:125px; height:18px; top:205px; }
+
+#adress{ width:125px; height:18px; top:260px; }
+
+#zip   { width:125px; height:18px; top:315px; }
+
+#city  { width:125px; height:18px; top:370px; }
+
+#phone { width:125px; height:18px; top:425px; }
+
+#mail  { width:125px; height:18px; top:480px; }
+
+#reg_text{ font-size:25px; width:150px; top:47%; }
+
+#sitter_t{ position:absolute; font-size:18px; width:55px; top:715px; right:1.5%; }
+
+#homew_t { position:absolute; font-size:18px; width:55px; top:740px; right:1.5%; }
+
+#sitter  { top:538px; left:2%; }
+
+#homework{ top:588px; left:4%; }
+
+#reg_button_2{
+
+	margin:auto;
+
+	width:125px;
+
+	height:27.5px;
+
+	top:0;
+
+	bottom:0;
+
+	top:650px;
+
+}
+
+
+
+/*Ändra Uppgifter*/
+
+#change_text{
+
+	font-size:25px; 
+
+	width:166px; 
+
+	top:46.5%; 	
+
+}
+
+#change{
+
+	position:absolute;
+
+	top:41.5%;
+
+	left:27.5%;
+
+	background:#D3D3D3;
+
+	color:black;
+
+}
+
+
+
+/*Mina bokningar*/
+
+#mina_bokningar{
+
+	position:absolute;
+
+	margin:auto;
+
+	width:45%;
+
+	top:45%; 
+
+	left:0;
+
+	right:0;
+
+}
+
+
+
+/*Boka Tider*/
+
+#namn_bokning{
+
+	position:absolute;
+
+	width:200px;
+
+	height:35px;
+
+	top:6%;
+
+}
+
+#barn{
+
+	position:absolute;
+
+	margin:auto;
+
+	width:205px;
+
+	height:40px;
+
+	top:56.5%;
+
+	left:0;
+
+	right:0;
+
+}
+
+#ämne{
+
+	position:absolute;
+
+	width:200px;
+
+	height:35px;
+
+	top:17.5%;
+
+} 
+
+#start{
+
+	position:absolute;
+
+	width:200px;
+
+	height:4.5%;		
+
+	top:34.5%;
+
+}
+
+#end{
+
+	position:absolute;
+
+	width:200px;
+
+	height:4.5%;		
+
+	top:50%;
+
+}
+
+#vakt{
+
+	position:absolute;
+
+	margin:auto;
+
+	width:205px;
+
+	height:35px;
+
+	top:78%;
+
+	left:0;
+
+	right:0;
+
+}
+
+#boka_hjälp{
+
+	position:absolute;
+
+	width:100px;
+
+	height:30px;	
+
+	top:85%;
+
+}
+
+#bokaLäx{
+
+	position:absolute;
+
+	font-size:25px;	
+
+	width:148px;	
+
+	margin:auto; 
+
+	top:46%;
+
+	left:0; 
+
+	right:0; 
+
+}
+
+#bokaBarn{ 
+
+	position:absolute; 
+
+	margin:auto; 
+
+	font-size:25px;
+
+	width:151.5px;  
+
+	top:46%; 
+
+	left:0; 
+
+	right:0;
+
+}
+
+#starttid{ 
+
+	position:absolute; 
+
+	font-size:18px; 
+
+	width:60px;
+
+	top:59.5%; 
+
+}
+
+#sluttid{ 
+
+	position:absolute; 
+
+	font-size:18px; 
+
+	width:55px; 
+
+	top:67.5%; 
+
+}	
+
+
+
+/*Surfplattor ståendes*/
+
+@media all and (max-width:900px){
+
+	#banner{ width:80%; height:43%; }
+
+	#logout_button { height:20px; top:35%; left:75%; }
+
+	#log_button { height:20px; top:35%; left:75%; }
+
+	#sitter_t{ font-size:17px; top:74%; right:4%; }
+
+	#homew_t { font-size:17px; top:76.5%; right:4%; }
+
+	#sitter  { top:538px; left:10%;}
+
+	#homework{ top:588px; left:10%;}
+
+	#reg_button_2{ width:15%; height:3%; top:85%; }
+
+}
+
+/*Liggandes*/
+
+@media all and (max-height:800px){
+
+	#sitter_t{ font-size:17px; top:82.5%; right:3%; }
+
+	#homew_t { font-size:17px; top:86%; right:3%; }
+
+	#sitter  { top:73%; left:85px; }
+
+	#homework{ top:79.5%; left:85px; }
+
+}
+
+/*Telefoner Ståendes*/
+
+@media all and (max-width:600px){
+
+	#change_text{ font-size:16px; width:34%; top:41.5%; }	
+
+	
+
+	#namn_bokning{ position:absolute; width:40%; height:20px; top:5%; }	
+
+	#barn{ position:absolute;width:41%; height:25px;top:55.5%; }
+
+	#ämne{ position:absolute; width:40%; height:20px; top:15%; } 
+
+	#start{ position:absolute; width:40%; height:5%; top:32%; }
+
+	#end{ position:absolute; width:40%; height:5%; top:52%; }
+
+	#vakt{ position:absolute; width:41%; height:20px; top:80%; }
+
+	#boka_hjälp{ position:absolute; width:25%; height:20px; top:85%; }
+
+	#bokaLäx{ position:absolute; font-size:18px; width:107px; top:45%; }
+
+	#bokaBarn{ position:absolute; font-size:18px; width:109px; top:45%; }
+
+	#starttid{ position:absolute; font-size:15px; width:45px; top:57%; }
+
+	#sluttid{ position:absolute; font-size:15px; width:42px; top:67%; }
+
+	
+
+	#banner{ width:100%; height:42%; }
+
+	#logout_button{ width:100px; height:20px; top:35.7; left:62%; }
+
+	#log_button{ width:100px; height:20px; top:35.7; left:62%; }
+
+	#pic_1{ width:30%; height:18%; top:79%; left:1%;}
+
+	#pic_2{ width:20%; height:20%; top:77%; left:70%; }
+
+	#text{ font-size:15px; width:50%; top:50%; left:0%; }
+
+	#text_2{ font-size:15px; width:50%; top:50%; left:0%; }
+
+	
+
+	#login_panel { width:45%; height:30%; top:50%; }
+
+	#login_text  { width:29%; top:46.5%; }
+
+	#login_name  { width:35%; height:3.5%; top:20%; }
+
+	#login_pass  { width:35%; height:3.5%; top:30%; }
+
+	#login_button{ width:35%; height:4%; top:42%; }
+
+	#forgot_pass_button{ width:35%; height:4%; top:52%; }
+
+	
+
+	#reg_panel{ width:45%; height:54%; top:43%; }
+
+	#reg_text{ font-size:18px; width:34%; top:41.5%; }
+
+	#user{ width:35%; height:3%; top:3%; }
+
+	#pass{ width:35%; height:3%; top:12%; }
+
+	#pass2 { width:35%; height:3%; top:21%; }
+
+	#adress{ width:35%; height:3%; top:30%; }
+
+	#zip{ width:35%; height:3%; top:39%; }
+
+	#city{ width:35%; height:3%; top:48%; }
+
+	#phone{ width:35%; height:3%; top:57%; }
+
+	#mail{width:35%; height:3%; top:66%; }
+
+	#sitter{top:74%; left: 25%;}
+
+	#homework{top:80%; left:25%;}
+
+	#sitter_t{ font-size:15px; width:34%; top:82.5%; left:10%; }
+
+	#homew_t { font-size:15px; width:34%; top:85.5%; left:10%; }
+
+	#reg_button_2{ width:30%; height:20px; top:86%; }
+
+}
+
+
+
+/*Telefoner Liggandes*/
+
+@media all and (max-height:350px){
+
+	#change_text{font-size:16px; width:20%; top:33%; }
+
+	
+
+	#namn_bokning{ position:absolute; width:150px; height:20px; bottom:8.5%; }	
+
+	#barn{ position:absolute;width:155px; height:25px;top:53.5%; }
+
+	#ämne{ position:absolute; width:150px; height:20px; top:15%; } 
+
+	#start{ position:absolute; width:150px; height:6%; top:38%; }
+
+	#end{ position:absolute; width:150px; height:6%; top:60%; }
+
+	#vakt{ position:absolute; width:155px; height:20px; top:84%; }
+
+	#boka_hjälp{ position:absolute; width:50px; height:20px; top:92%; }
+
+	#bokaLäx{ position:absolute; font-size:18px; width:107px; top:37%; }
+
+	#bokaBarn{ position:absolute; font-size:18px; width:109px; top:37%; }
+
+	#starttid{ position:absolute; font-size:13px; width:45px; top:57%; }
+
+	#sluttid{ position:absolute; font-size:13px; width:42px; top:67.5%; }	
+
+	
+
+	#banner{ width:60%; }
+
+	#logout_button{ width:100px; height:20px; top:35.7%; left:80%;}
+
+	#log_button{ width:100px; height:20px; top:35.7%; left:80%; }
+
+	#pic_1{ width:30%; height:28%; top:70%; }
+
+	#pic_2{ width:22%; height:30%; top:70%; left:70%; }
+
+	#text{ font-size:15px; width:40%; top:50%; left:5%; }
+
+	#text_2{ font-size:15px;  width:40%; top:50%; }
+
+	
+
+	#login_panel { width:30%; height:45%; top:45%; }
+
+	#login_text  { font-size:22px; width:15%; top:40%; }
+
+	#login_name  { width:20%; height:4%; top:20%; }
+
+	#login_pass  { width:20%; height:4%; top:35%; }
+
+	#login_button{ width:20%; height:20px; top:50%; }
+
+	#forgot_pass_button{ width:20%; height:20px; top:65%; }
+
+	
+
+	#reg_panel{ width:30%; height:78%; top:35%; }
+
+	#reg_text{ font-size:18px; width:20%; top:31%; }
+
+	#user{ width:20%; height:3.5%; bottom:8%; }
+
+	#pass{ width:20%; height:3.5%; top:7%; }
+
+	#pass2 { width:20%; height:3.5%; top:19%; }
+
+	#adress{ width:20%; height:3.5%; top:31%; }
+
+	#zip{ width:20%; height:3.5%; top:43%; }
+
+	#city{ width:20%; height:3.5%; top:55%; }
+
+	#phone{ width:20%; height:3.5%; top:67%; }
+
+	#mail{ width:20%; height:3.5%; top:79%; }
+
+	#sitter{ width:20%; height:3.5%; top:90.5%; left:13%;}
+
+	#homework{ width:20%; height:3.5%; top:101%; left:13%;}
+
+	#sitter_t{ font-size:15px; width:10%; top:88%; right:13%; }
+
+	#homew_t { font-size:15px; width:10%; top:93%; right:13%; }
+
+	#reg_button_2{ width:20%; height:20px; top:113%; }
+
+}
+
+nav select {
+
+  display: none;
+
+}
+
+@media(max-width: 960px) {
+
+  nav ul     { display: none; }
+
+  nav select { display: inline-block; }
+
+  #menu {
+
+	  display:none;
+
+  }
+
+  #change{
+
+	  display:none;
+
+  }
+
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    width: 10%;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
