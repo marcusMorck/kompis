@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="../includes/main.css">
+        <link rel="stylesheet" type="text/css" href="../css/main.css">
     </head>
     <body>
     <form action='redirect_function_admin.php' method='POST'>
         <?php
-            require 'config.php';
+            require '../includes/config.php';
 
             $sql = 'SELECT * FROM users';
 
@@ -49,5 +49,3 @@
         </form>
     </body>
 </html>
-
- 
